@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardPokerGame", "RichardPokerGame\RichardPokerGame.csproj", "{00653E70-1A95-45DC-8A52-E7FCB9B1DB64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichardPokerGame.Tests", "RichardPokerGame.Tests\RichardPokerGame.Tests.csproj", "{CCE01425-27DA-4A97-92E8-10F39F9B9868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00653E70-1A95-45DC-8A52-E7FCB9B1DB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00653E70-1A95-45DC-8A52-E7FCB9B1DB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00653E70-1A95-45DC-8A52-E7FCB9B1DB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00653E70-1A95-45DC-8A52-E7FCB9B1DB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE01425-27DA-4A97-92E8-10F39F9B9868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE01425-27DA-4A97-92E8-10F39F9B9868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE01425-27DA-4A97-92E8-10F39F9B9868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE01425-27DA-4A97-92E8-10F39F9B9868}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

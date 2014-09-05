@@ -204,7 +204,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Poker\Card.cs" />
     <Compile Include="Poker\Dealer.cs" />
+    <Compile Include="Poker\PokerEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

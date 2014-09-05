@@ -23,7 +23,6 @@ namespace RichardPokerGame.Tests
             
             //Assert    
             Assert.AreEqual(cardCount, dealer.CardCount);            
-        }
-
+        }      
     }
 }

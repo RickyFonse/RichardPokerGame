@@ -9,7 +9,6 @@ namespace RichardPokerGame.Poker
     {
         public static bool IsStraightFlush(List<Card> cards)
         {
-
             //first check if all suits are the same
             if (cards.Count(c => c.Suit == cards[0].Suit) == 5)
             {
@@ -23,7 +22,6 @@ namespace RichardPokerGame.Poker
                 return isConsecutive;
             }
                                                                
-
             return false;          
         }
 
@@ -32,5 +30,10 @@ namespace RichardPokerGame.Poker
             //if first or second item have four of the same value
             return (cards.Count(c => c.Value == cards[0].Value) == 4) || (cards.Count(c => c.Value == cards[1].Value) == 4);
         }
+
+        public static bool IsFullHouse(List<Card> cards)
+        {
+            return true;
+        }        
     }
 }

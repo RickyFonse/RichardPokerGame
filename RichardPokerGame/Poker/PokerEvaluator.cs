@@ -21,8 +21,8 @@ namespace RichardPokerGame.Poker
 
                 return isConsecutive;
             }
-                                                               
-            return false;          
+
+            return false;
         }
 
         public static bool IsFourOfAKind(List<Card> cards)
@@ -33,7 +33,14 @@ namespace RichardPokerGame.Poker
 
         public static bool IsFullHouse(List<Card> cards)
         {
-            return true;
-        }        
+            var groupedCards = from card in cards
+                               group card by card.Value
+                                   into grouping
+                                   select new { grouping.Key, Count = grouping.Count() };
+
+            //if the count of the first row is 2 or 3           
+            var countOfFirstValue = groupedCards.First().Count;
+            return countOfFirstValue == 2 || countOfFirstValue == 3;
+        }
     }
 }

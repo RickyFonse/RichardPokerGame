@@ -105,5 +105,24 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsTrue(isFullHouse);
         }
+
+        [Test]
+        public void Hand_Should_Not_Be_FullHouse()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 11 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+
+
+            //Act
+            var isFullHouse = PokerEvaluator.IsFullHouse(cards);
+
+            //Assert    
+            Assert.IsFalse(isFullHouse);
+        }
     }
 }

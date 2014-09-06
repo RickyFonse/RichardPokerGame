@@ -34,13 +34,17 @@ namespace RichardPokerGame.Poker
         public static bool IsFullHouse(List<Card> cards)
         {
             var groupedCards = from card in cards
-                               group card by card.Value
-                                   into grouping
-                                   select new { grouping.Key, Count = grouping.Count() };
+                group card by card.Value
+                into grouping
+                select new {grouping.Key, Count = grouping.Count()};
 
-            //if the count of the first row is 2 or 3           
-            var countOfFirstValue = groupedCards.First().Count;
-            return countOfFirstValue == 2 || countOfFirstValue == 3;
+            //if the count of rows is 2 and the count of values for the first row is 2 or 3
+            if (groupedCards.Count() == 2)
+            {
+                var countOfFirstValue = groupedCards.First().Count;
+                return countOfFirstValue == 2 || countOfFirstValue == 3;
+            }
+            return false;
         }
     }
 }

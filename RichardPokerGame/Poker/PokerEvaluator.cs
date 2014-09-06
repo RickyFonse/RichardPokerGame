@@ -7,7 +7,6 @@ namespace RichardPokerGame.Poker
 {
     public static class PokerEvaluator
     {
-
         public static bool IsStraightFlush(List<Card> cards)
         {
 
@@ -27,5 +26,10 @@ namespace RichardPokerGame.Poker
 
             return false;          
         }
+
+        public static bool IsFourOfAKind(List<Card> cards)
+        {
+           return true;
+        }        
     }
 }

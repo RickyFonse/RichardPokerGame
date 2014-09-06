@@ -29,5 +29,25 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsTrue(isStraightFlush);            
         }
+
+
+        [Test]
+        public void Hand_Should_Be_FourOfAKind()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 5 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+
+            //Act
+            var isFourOfAKind = PokerEvaluator.IsFourOfAKind(cards);
+
+            //Assert    
+            Assert.IsTrue(isFourOfAKind);
+        }
     }
 }

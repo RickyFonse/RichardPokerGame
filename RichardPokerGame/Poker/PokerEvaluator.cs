@@ -29,7 +29,8 @@ namespace RichardPokerGame.Poker
 
         public static bool IsFourOfAKind(List<Card> cards)
         {
-           return true;
-        }        
+            //if first or second item have four of the same value
+            return (cards.Count(c => c.Value == cards[0].Value) == 4) || (cards.Count(c => c.Value == cards[1].Value) == 4);
+        }
     }
 }

@@ -256,5 +256,43 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsTrue(isTwoPairs);
         }
+
+        [Test]
+        public void Hand_Should_Not_Be_TwoPairs()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 5 });
+
+
+            //Act
+            var isTwoPairs = PokerEvaluator.IsTwoPairs(cards);
+
+            //Assert    
+            Assert.IsFalse(isTwoPairs);
+        }
+
+        [Test]
+        public void Hand_Should_Be_Pair()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 5 });
+
+
+            //Act
+            var isPair = PokerEvaluator.IsPair(cards);
+
+            //Assert    
+            Assert.True(isPair);
+        }
     }
 }

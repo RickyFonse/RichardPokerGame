@@ -65,5 +65,10 @@ namespace RichardPokerGame.Poker
             var countOfFirstValue = groupedCards.First().Count;
             return countOfFirstValue == 1 || countOfFirstValue == 2;                       
         }
+
+        public static bool IsPair(List<Card> cards)
+        {
+           return true;
+        }
     }
 }

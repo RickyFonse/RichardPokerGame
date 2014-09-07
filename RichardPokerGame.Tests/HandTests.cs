@@ -243,11 +243,11 @@ namespace RichardPokerGame.Tests
         {
             //Arrange                        
             var cards = new List<Card>();
-            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 1 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
 
 
             //Act

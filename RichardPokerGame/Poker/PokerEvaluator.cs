@@ -25,9 +25,8 @@ namespace RichardPokerGame.Poker
                                    into grouping
                                    select new { grouping.Key, Count = grouping.Count() };
 
-            //if the count of rows is 2 and the count of values for the first row is 2 or 3
-            if (groupedCards.Count() != 2) return false;
-            //var countOfFirstValue = groupedCards.First().Count;
+            //if the count of rows is 2 and IsThreeOfAKind
+            if (groupedCards.Count() != 2) return false;            
             return IsThreeOfAKind(cards);
         }
 
@@ -55,8 +54,16 @@ namespace RichardPokerGame.Poker
         }
 
         public static bool IsTwoPairs(List<Card> cards)
-        {            
-            return true;
+        {
+            var groupedCards = from card in cards
+                               group card by card.Value
+                                   into grouping
+                                   select new { grouping.Key, Count = grouping.Count() };
+
+            //if the count of rows is 3 and the count of values for the first row is 1 or 2
+            if (groupedCards.Count() != 3) return false;
+            var countOfFirstValue = groupedCards.First().Count;
+            return countOfFirstValue == 1 || countOfFirstValue == 2;                       
         }
     }
 }

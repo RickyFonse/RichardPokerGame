@@ -45,8 +45,7 @@ namespace RichardPokerGame.Poker
 
                 bool isConsecutive = !sortedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Any();
 
-                return isConsecutive;
-           
+                return isConsecutive;           
         }
     }
 }

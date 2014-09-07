@@ -180,5 +180,24 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsTrue(isStraight);
         }
+
+        [Test]
+        public void Hand_Should_Not_Be_Straight()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 9 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 5 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+
+            //Act
+            var isStraight = PokerEvaluator.IsStraight(cards);
+
+            //Assert    
+            Assert.IsFalse(isStraight);
+        }
     }
 }

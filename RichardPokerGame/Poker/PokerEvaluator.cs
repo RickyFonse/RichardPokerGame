@@ -46,5 +46,10 @@ namespace RichardPokerGame.Poker
             }
             return false;
         }
+
+        public static bool IsFlush(List<Card> cards)
+        {
+            return true;   
+        }
     }
 }

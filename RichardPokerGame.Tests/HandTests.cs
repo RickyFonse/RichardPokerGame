@@ -10,7 +10,6 @@ namespace RichardPokerGame.Tests
 {
     public class HandTests
     {
-
         [Test]
         public void Hand_Should_Be_StraightFlush()
         {
@@ -123,6 +122,25 @@ namespace RichardPokerGame.Tests
 
             //Assert    
             Assert.IsFalse(isFullHouse);
+        }
+
+        [Test]
+        public void Hand_Should_Be_Flush()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 8 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 10 });
+
+
+            //Act
+            var isFlush = PokerEvaluator.IsFlush(cards);
+
+            //Assert    
+            Assert.IsTrue(isFlush);
         }
     }
 }

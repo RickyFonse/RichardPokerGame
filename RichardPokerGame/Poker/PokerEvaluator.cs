@@ -10,7 +10,7 @@ namespace RichardPokerGame.Poker
         public static bool IsStraightFlush(List<Card> cards)
         {
             //first check if all suits are the same
-            if (cards.Count(c => c.Suit == cards[0].Suit) == 5)
+            if (IsFlush(cards))
             {
                 //sort cards...this should be moved if going to pass more cards, but leave here for now
                 var sortedCards = from card in cards
@@ -49,7 +49,8 @@ namespace RichardPokerGame.Poker
 
         public static bool IsFlush(List<Card> cards)
         {
-            return true;   
+            //if all suits are the same true else false
+            return cards.Count(c => c.Suit == cards[0].Suit) == 5;
         }
     }
 }

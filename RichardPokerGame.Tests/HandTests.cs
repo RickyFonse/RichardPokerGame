@@ -237,5 +237,24 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsFalse(isThreeOfAKind);
         }
+
+        [Test]
+        public void Hand_Should_Be_TwoPairs()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 4 });
+
+
+            //Act
+            var isTwoPairs = PokerEvaluator.IsTwoPairs(cards);
+
+            //Assert    
+            Assert.IsTrue(isTwoPairs);
+        }
     }
 }

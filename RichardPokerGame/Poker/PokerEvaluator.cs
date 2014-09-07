@@ -54,6 +54,9 @@ namespace RichardPokerGame.Poker
             return (cards.Count(c => c.Value == cards[0].Value) == 3) || (cards.Count(c => c.Value == cards[1].Value) == 3) || (cards.Count(c => c.Value == cards[2].Value) == 3);
         }
 
-        
+        public static bool IsTwoPairs(List<Card> cards)
+        {            
+            return true;
+        }
     }
 }

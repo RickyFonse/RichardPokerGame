@@ -27,8 +27,8 @@ namespace RichardPokerGame.Poker
 
             //if the count of rows is 2 and the count of values for the first row is 2 or 3
             if (groupedCards.Count() != 2) return false;
-            var countOfFirstValue = groupedCards.First().Count;
-            return countOfFirstValue == 2 || countOfFirstValue == 3;
+            //var countOfFirstValue = groupedCards.First().Count;
+            return IsThreeOfAKind(cards);
         }
 
         public static bool IsFlush(List<Card> cards)
@@ -50,7 +50,8 @@ namespace RichardPokerGame.Poker
 
         public static bool IsThreeOfAKind(List<Card> cards)
         {
-            return true;
+            //if first, second or third item have 3 of the same value
+            return (cards.Count(c => c.Value == cards[0].Value) == 3) || (cards.Count(c => c.Value == cards[1].Value) == 3) || (cards.Count(c => c.Value == cards[2].Value) == 3);
         }
     }
 }

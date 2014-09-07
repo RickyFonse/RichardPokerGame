@@ -207,9 +207,9 @@ namespace RichardPokerGame.Tests
             var cards = new List<Card>();
             cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
             cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
             cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
 
 
             //Act

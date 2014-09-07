@@ -142,5 +142,24 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.IsTrue(isFlush);
         }
+
+        [Test]
+        public void Hand_Should_Not_Be_Flush()
+        {
+            //Arrange                        
+            var cards = new List<Card>();
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 3 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 5 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+
+            //Act
+            var isFlush = PokerEvaluator.IsFlush(cards);
+
+            //Assert    
+            Assert.IsFalse(isFlush);
+        }
     }
 }

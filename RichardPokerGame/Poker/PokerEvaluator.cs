@@ -39,12 +39,9 @@ namespace RichardPokerGame.Poker
                 select new {grouping.Key, Count = grouping.Count()};
 
             //if the count of rows is 2 and the count of values for the first row is 2 or 3
-            if (groupedCards.Count() == 2)
-            {
-                var countOfFirstValue = groupedCards.First().Count;
-                return countOfFirstValue == 2 || countOfFirstValue == 3;
-            }
-            return false;
+            if (groupedCards.Count() != 2) return false;
+            var countOfFirstValue = groupedCards.First().Count;
+            return countOfFirstValue == 2 || countOfFirstValue == 3;
         }
 
         public static bool IsFlush(List<Card> cards)

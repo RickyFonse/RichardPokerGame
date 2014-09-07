@@ -8,7 +8,7 @@ namespace RichardPokerGame.Poker
     public static class PokerEvaluator
     {
         public static bool IsStraightFlush(List<Card> cards)
-        {            
+        {
             return IsFlush(cards) && IsStraight(cards);
         }
 
@@ -21,9 +21,9 @@ namespace RichardPokerGame.Poker
         public static bool IsFullHouse(List<Card> cards)
         {
             var groupedCards = from card in cards
-                group card by card.Value
-                into grouping
-                select new {grouping.Key, Count = grouping.Count()};
+                               group card by card.Value
+                                   into grouping
+                                   select new { grouping.Key, Count = grouping.Count() };
 
             //if the count of rows is 2 and the count of values for the first row is 2 or 3
             if (groupedCards.Count() != 2) return false;
@@ -38,14 +38,19 @@ namespace RichardPokerGame.Poker
         }
 
         public static bool IsStraight(List<Card> cards)
-        {                           
-                var sortedCards = from card in cards
-                                  orderby card.Value
-                                  select card;
+        {
+            var sortedCards = from card in cards
+                              orderby card.Value
+                              select card;
 
-                bool isConsecutive = !sortedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Any();
+            bool isConsecutive = !sortedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Any();
 
-                return isConsecutive;           
+            return isConsecutive;
+        }
+
+        public static bool IsThreeOfAKind(List<Card> cards)
+        {
+            return true;
         }
     }
 }

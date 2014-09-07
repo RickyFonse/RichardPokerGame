@@ -8,21 +8,8 @@ namespace RichardPokerGame.Poker
     public static class PokerEvaluator
     {
         public static bool IsStraightFlush(List<Card> cards)
-        {
-            //first check if all suits are the same
-            if (IsFlush(cards))
-            {
-                //sort cards...this should be moved if going to pass more cards, but leave here for now
-                var sortedCards = from card in cards
-                                  orderby card.Value
-                                  select card;
-
-                bool isConsecutive = !sortedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Any();
-
-                return isConsecutive;
-            }
-
-            return false;
+        {            
+            return IsFlush(cards) && IsStraight(cards);
         }
 
         public static bool IsFourOfAKind(List<Card> cards)
@@ -51,8 +38,15 @@ namespace RichardPokerGame.Poker
         }
 
         public static bool IsStraight(List<Card> cards)
-        {           
-            return true;
+        {                           
+                var sortedCards = from card in cards
+                                  orderby card.Value
+                                  select card;
+
+                bool isConsecutive = !sortedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Any();
+
+                return isConsecutive;
+           
         }
     }
 }

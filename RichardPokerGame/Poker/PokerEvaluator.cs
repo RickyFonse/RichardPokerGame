@@ -49,5 +49,10 @@ namespace RichardPokerGame.Poker
             //if all suits are the same true else false
             return cards.Count(c => c.Suit == cards[0].Suit) == 5;
         }
+
+        public static bool IsStraight(List<Card> cards)
+        {           
+            return true;
+        }
     }
 }

@@ -46,6 +46,9 @@ namespace RichardPokerGame.Tests
 
             //Assert    
             Assert.IsFalse(isStraightFlush);
+            Assert.IsTrue(PokerEvaluator.IsStraight(cards));
+            Assert.IsFalse(PokerEvaluator.IsFlush(cards));
+
         }
 
         [Test]

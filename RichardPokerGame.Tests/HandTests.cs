@@ -435,7 +435,7 @@ namespace RichardPokerGame.Tests
         }
 
         [Test]
-        public void Hand_FullHouse_Should_Win_FourOfAKind()
+        public void Hand_FullHouse_Should_Win_Not_FourOfAKind()
         {
             //Arrange                                    
             //FourOfAKind            
@@ -471,6 +471,45 @@ namespace RichardPokerGame.Tests
 
             //Assert    
             Assert.AreNotEqual("Player2 wins - FullHouse", outcomeMsg);
+        }
+
+        [Test]
+        public void Hand_FullHouse_Should_Win_Flush()
+        {
+            //Arrange                                    
+            //FullHouse            
+            var fullHouseCards = new List<Card>();
+            fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+            fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+
+            var player1Hand = new Hand();
+            player1Hand.Cards = fullHouseCards;
+            player1Hand.PlayerId = 1;
+
+            //Flush            
+            var flushCards = new List<Card>();
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 8 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 10 });
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = flushCards;
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreEqual("Player1 wins - FullHouse", outcomeMsg);
         }
     }
 }

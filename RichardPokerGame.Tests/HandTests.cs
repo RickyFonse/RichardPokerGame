@@ -589,5 +589,44 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.AreEqual("Player1 wins - Flush", outcomeMsg);
         }
+
+        [Test]
+        public void Hand_Straight_Should_Not_Win_Flush()
+        {
+            //Arrange                                    
+            //Flush            
+            var flushCards = new List<Card>();
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 8 });
+            flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 10 });
+
+            var player1Hand = new Hand();
+            player1Hand.Cards = flushCards;
+            player1Hand.PlayerId = 1;
+
+            //Straight            
+            var straightCards = new List<Card>();
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 4 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 5 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = straightCards;
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreNotEqual("Player2 wins - Straight", outcomeMsg);
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace RichardPokerGame.Poker
                 }
                 if (IsStraight(hand.Cards))
                 {
-                    hand.Category = Hand.RankCategory.Flush;
+                    hand.Category = Hand.RankCategory.Straight;
                 }
                 
             }            

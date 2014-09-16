@@ -23,9 +23,12 @@ namespace RichardPokerGame.Poker
                     hand.Category = Hand.RankCategory.FourOfAKind;
                     continue;
                 }
-            }
+                if (IsFullHouse(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.FourOfAKind;                    
+                }
+            }            
 
-            hands[0].Category = Hand.RankCategory.FourOfAKind;
 
 
             var outcomeMsg = string.Empty;

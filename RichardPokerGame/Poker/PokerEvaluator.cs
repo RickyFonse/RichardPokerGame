@@ -32,9 +32,12 @@ namespace RichardPokerGame.Poker
                 {
                     hand.Category = Hand.RankCategory.Flush;
                 }
-            }
-
-            
+                if (IsStraight(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.Flush;
+                }
+                
+            }            
 
             var outcomeMsg = string.Empty;
 

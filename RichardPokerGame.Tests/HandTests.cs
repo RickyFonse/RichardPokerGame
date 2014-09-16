@@ -433,5 +433,44 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.AreEqual("Player1 wins - FourOfAKind", outcomeMsg);
         }
+
+        [Test]
+        public void Hand_FullHouse_Should_Win_FourOfAKind()
+        {
+            //Arrange                                    
+            //FourOfAKind            
+            var fourOfAKindCards = new List<Card>();
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+
+            var player1Hand = new Hand();
+            player1Hand.Cards = fourOfAKindCards;
+            player1Hand.PlayerId = 1;
+
+            //FullHouse            
+            var fullHousecards = new List<Card>();
+            fullHousecards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            fullHousecards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+            fullHousecards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            fullHousecards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            fullHousecards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = fullHousecards;
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreNotEqual("Player2 wins - FullHouse", outcomeMsg);
+        }
     }
 }

@@ -20,18 +20,19 @@ namespace RichardPokerGame.Poker
                 }
                 if (IsFourOfAKind(hand.Cards))
                 {
-                    hand.Category = Hand.RankCategory.FourKind;
+                    hand.Category = Hand.RankCategory.FourOfAKind;
                 }
             }
 
-            var winnerMsg = string.Empty;
+
+            var outcomeMsg = string.Empty;
 
             if (hands[0].Category > hands[1].Category)
-                winnerMsg = "Player" + hands[0].PlayerId + " wins - " + hands[0].Category;
+                outcomeMsg = "Player" + hands[0].PlayerId + " wins - " + hands[0].Category;
             else if(hands[0].Category > hands[1].Category)
-                winnerMsg = "Player" + hands[1].PlayerId + " wins - " + hands[1].Category;
+                outcomeMsg = "Player" + hands[1].PlayerId + " wins - " + hands[1].Category;
 
-            return winnerMsg;
+            return outcomeMsg;
         }
 
         public static bool IsStraightFlush(List<Card> cards)

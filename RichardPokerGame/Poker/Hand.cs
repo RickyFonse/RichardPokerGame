@@ -16,7 +16,7 @@ namespace RichardPokerGame.Poker
             Straight = 4,
             Flush = 5,
             FullHouse = 6,
-            FourKind = 7,
+            FourOfAKind = 7,
             StraightFlush = 8,
         }
 

@@ -21,8 +21,11 @@ namespace RichardPokerGame.Poker
                 if (IsFourOfAKind(hand.Cards))
                 {
                     hand.Category = Hand.RankCategory.FourOfAKind;
+                    continue;
                 }
             }
+
+            hands[0].Category = Hand.RankCategory.FourOfAKind;
 
 
             var outcomeMsg = string.Empty;

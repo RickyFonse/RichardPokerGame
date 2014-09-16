@@ -79,7 +79,7 @@ namespace RichardPokerGame.Tests
             cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
             cards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
             cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
-            cards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 6 });
+            cards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
 
 
             //Act
@@ -315,6 +315,45 @@ namespace RichardPokerGame.Tests
 
             //Assert    
             Assert.IsFalse(isPair);
+        }
+
+        [Test]
+        public void Hand_StraightFlush_Should_Win_FourOfAKind()
+        {
+            //Arrange                                    
+            //StraightFlush
+            var straightFlushCards = new List<Card>();
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 5 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+            var player1Hand = new Hand();
+            player1Hand.Cards = straightFlushCards;
+            player1Hand.PlayerId = 1;
+
+            //FourOfAKind            
+            var fourOfAKindCards = new List<Card>();
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = fourOfAKindCards;
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var winningMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreEqual("Player1 wins - StraightFlush", winningMsg);
         }
     }
 }

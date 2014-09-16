@@ -206,6 +206,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Poker\Card.cs" />
     <Compile Include="Poker\Dealer.cs" />
+    <Compile Include="Poker\Hand.cs" />
     <Compile Include="Poker\PokerEvaluator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -343,10 +344,10 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <IISUrl>http://localhost:64855/</IISUrl>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64855</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>          
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64855/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

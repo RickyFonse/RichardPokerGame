@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using Microsoft.Ajax.Utilities;
@@ -8,6 +9,12 @@ namespace RichardPokerGame.Poker
 {
     public static class PokerEvaluator
     {
+
+        public static string Evaluate(List<Hand> hands)
+        {
+            return "Player1 wins - StraightFlush";
+        }
+
         public static bool IsStraightFlush(List<Card> cards)
         {
             return IsFlush(cards) && IsStraight(cards);

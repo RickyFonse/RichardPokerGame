@@ -9,10 +9,29 @@ namespace RichardPokerGame.Poker
 {
     public static class PokerEvaluator
     {
-
         public static string Evaluate(List<Hand> hands)
         {
-            return "Player1 wins - StraightFlush";
+            foreach (var hand in hands)
+            {
+                if (IsStraightFlush(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.StraightFlush;
+                    continue;
+                }
+                if (IsFourOfAKind(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.FourKind;
+                }
+            }
+
+            var winnerMsg = string.Empty;
+
+            if (hands[0].Category > hands[1].Category)
+                winnerMsg = "Player" + hands[0].PlayerId + " wins - " + hands[0].Category;
+            else if(hands[0].Category > hands[1].Category)
+                winnerMsg = "Player" + hands[1].PlayerId + " wins - " + hands[1].Category;
+
+            return winnerMsg;
         }
 
         public static bool IsStraightFlush(List<Card> cards)

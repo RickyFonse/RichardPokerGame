@@ -7,7 +7,21 @@ namespace RichardPokerGame.Poker
 {
     public class Hand
     {
-        public List<Card> Cards { get; set; }            
-        public int PlayerId { get; set; }                       
+        public enum RankCategory
+        {
+            None = 0,
+            Pair = 1,
+            TwoPair = 2,
+            ThreeKind = 3,
+            Straight = 4,
+            Flush = 5,
+            FullHouse = 6,
+            FourKind = 7,
+            StraightFlush = 8,
+        }
+
+        public List<Card> Cards { get; set; }
+        public int PlayerId { get; set; }
+        public RankCategory Category { get; set; }
     }
 }

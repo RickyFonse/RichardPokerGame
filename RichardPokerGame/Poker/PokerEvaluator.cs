@@ -43,8 +43,12 @@ namespace RichardPokerGame.Poker
                     hand.Category = Hand.RankCategory.ThreeOfAKind;    
                     continue;
                 }
+                if (IsTwoPairs(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.TwoPair;                    
+                }
 
-                hand.Category = Hand.RankCategory.TwoPair;                    
+                                    
                 
             }            
 

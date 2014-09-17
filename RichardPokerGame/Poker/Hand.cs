@@ -12,7 +12,7 @@ namespace RichardPokerGame.Poker
             None = 0,
             Pair = 1,
             TwoPair = 2,
-            ThreeKind = 3,
+            ThreeOfAKind = 3,
             Straight = 4,
             Flush = 5,
             FullHouse = 6,

@@ -31,11 +31,14 @@ namespace RichardPokerGame.Poker
                 if (IsFlush(hand.Cards))
                 {
                     hand.Category = Hand.RankCategory.Flush;
+                    continue;
                 }
                 if (IsStraight(hand.Cards))
                 {
                     hand.Category = Hand.RankCategory.Straight;
+                    continue;
                 }
+                hand.Category = Hand.RankCategory.ThreeOfAKind;
                 
             }            
 

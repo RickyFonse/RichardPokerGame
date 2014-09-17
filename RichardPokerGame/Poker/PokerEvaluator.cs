@@ -45,10 +45,13 @@ namespace RichardPokerGame.Poker
                 }
                 if (IsTwoPairs(hand.Cards))
                 {
-                    hand.Category = Hand.RankCategory.TwoPair;                    
+                    hand.Category = Hand.RankCategory.TwoPairs;                    
+                    continue;
                 }
-
-                                    
+                if (IsPair(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.Pair;                    
+                }                
                 
             }            
 

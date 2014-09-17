@@ -82,7 +82,6 @@ namespace RichardPokerGame.Poker
                                    select new { grouping.Key, Count = grouping.Count() };
 
 
-
             foreach (var groupedCard in groupedCards)
             {
                 if (groupedCard.Count == 4)
@@ -176,9 +175,13 @@ namespace RichardPokerGame.Poker
         public static int GetStraightFlushRank(List<Card> cards)
         {            
             return cards.OrderByDescending(i => i.Value).First().Value;            
-        }        
+        }
 
-
+        public static int GetFourOfAKindRank(List<Card> cards)
+        {
+            return 2;
+        }  
+        
         #endregion
         
     }

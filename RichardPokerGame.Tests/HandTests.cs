@@ -864,6 +864,23 @@ namespace RichardPokerGame.Tests
             Assert.AreEqual(8, rank);
         }
 
+        [Test]
+        public void Hand_FourOfAKind_Rank_Should_Be_2()
+        {
+            //Arrange            
+            var fourOfAKindCards = new List<Card>();
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 6 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
+            fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
+
+            //Act
+            var rank = PokerEvaluator.GetFourOfAKindRank(fourOfAKindCards);
+
+            //Assert    
+            Assert.AreEqual(2, rank);
+        }
 
         [Test]
         public void Hand_StraightFlush_HighCard8_Should_Win_StraightFlush_HighCard6()

@@ -330,8 +330,8 @@ namespace RichardPokerGame.Tests
             straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = straightFlushCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = straightFlushCards;            
 
             //FourOfAKind            
             var fourOfAKindCards = new List<Card>();
@@ -369,8 +369,8 @@ namespace RichardPokerGame.Tests
             straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = straightFlushCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = straightFlushCards;            
 
             //FourOfAKind            
             var fourOfAKindCards = new List<Card>();
@@ -408,8 +408,8 @@ namespace RichardPokerGame.Tests
             fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = fourOfAKindCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = fourOfAKindCards;            
 
             //FullHouse            
             var fullHousecards = new List<Card>();
@@ -447,8 +447,8 @@ namespace RichardPokerGame.Tests
             fourOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = fourOfAKindCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = fourOfAKindCards;            
 
             //FullHouse            
             var fullHousecards = new List<Card>();
@@ -486,8 +486,8 @@ namespace RichardPokerGame.Tests
             fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = fullHouseCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = fullHouseCards;            
 
             //Flush            
             var flushCards = new List<Card>();
@@ -525,8 +525,8 @@ namespace RichardPokerGame.Tests
             fullHouseCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = fullHouseCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = fullHouseCards;            
 
             //Flush            
             var flushCards = new List<Card>();
@@ -564,8 +564,8 @@ namespace RichardPokerGame.Tests
             flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 10 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = flushCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = flushCards;            
 
             //Straight            
             var straightCards = new List<Card>();
@@ -603,8 +603,8 @@ namespace RichardPokerGame.Tests
             flushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 10 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = flushCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = flushCards;            
 
             //Straight            
             var straightCards = new List<Card>();
@@ -642,8 +642,8 @@ namespace RichardPokerGame.Tests
             straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = straightCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = straightCards;            
 
             //ThreeOfAKind            
             var threeOfAKindCards = new List<Card>();
@@ -681,8 +681,8 @@ namespace RichardPokerGame.Tests
             straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
 
             var player1Hand = new Hand();
-            player1Hand.Cards = straightCards;
             player1Hand.PlayerId = 1;
+            player1Hand.Cards = straightCards;            
 
             //ThreeOfAKind            
             var threeOfAKindCards = new List<Card>();
@@ -706,5 +706,57 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.AreNotEqual("Player2 wins - ThreeOfAKind", outcomeMsg);
         }
+
+        [Test]
+        public void Hand_ThreeOfAKind_Should_Win_TwoPairs()
+        {
+            //Arrange                                                          
+            var player1Hand = new Hand();
+            player1Hand.PlayerId = 1;
+            player1Hand.Cards = GetCardsThreeOfAKind();            
+            
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = GetCardsTwoPairs();
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreEqual("Player1 wins - ThreeOfAKind", outcomeMsg);
+        }
+
+
+        #region Helpers
+
+        public List<Card> GetCardsThreeOfAKind()
+        {
+            var threeOfAKindCards = new List<Card>();
+            threeOfAKindCards.Add(new Card() {Suit = Card.CardSuit.Club, Value = 2});
+            threeOfAKindCards.Add(new Card() {Suit = Card.CardSuit.Diamond, Value = 1});
+            threeOfAKindCards.Add(new Card() {Suit = Card.CardSuit.Heart, Value = 3});
+            threeOfAKindCards.Add(new Card() {Suit = Card.CardSuit.Club, Value = 3});
+            threeOfAKindCards.Add(new Card() {Suit = Card.CardSuit.Diamond, Value = 3});
+            return threeOfAKindCards;
+        }
+
+        public List<Card> GetCardsTwoPairs()
+        {
+            var twoPairsCards = new List<Card>();
+            twoPairsCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 1 });
+            twoPairsCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 1 });
+            twoPairsCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
+            twoPairsCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 2 });
+            twoPairsCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 2 });
+
+            return twoPairsCards;
+        }
+
+
+        #endregion        
     }
 }

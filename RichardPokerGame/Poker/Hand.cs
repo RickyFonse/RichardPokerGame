@@ -23,5 +23,6 @@ namespace RichardPokerGame.Poker
         public List<Card> Cards { get; set; }
         public int PlayerId { get; set; }
         public RankCategory Category { get; set; }
+        public int Rank { get; set; }
     }
 }

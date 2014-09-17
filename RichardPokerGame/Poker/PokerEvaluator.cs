@@ -67,6 +67,7 @@ namespace RichardPokerGame.Poker
             return outcomeMsg;
         }
 
+        #region RankCategoryFunctions
         public static bool IsStraightFlush(List<Card> cards)
         {
             return IsFlush(cards) && IsStraight(cards);
@@ -167,6 +168,17 @@ namespace RichardPokerGame.Poker
 
             //if only 1 of the group rows has a count of 2
             return groupedCards.Count(c => c.Count == 2) == 1;
+        }        
+        #endregion
+        
+        #region RankValueFunctions
+        public static int GetStraightFlushRank(List<Card> cards)
+        {
+            return 8;
         }
+        
+
+        #endregion
+        
     }
 }

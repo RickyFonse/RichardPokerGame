@@ -846,6 +846,57 @@ namespace RichardPokerGame.Tests
         }
 
 
+        [Test]
+        public void Hand_StraightFlush_Rank_Should_Be_8()
+        {
+            //Arrange            
+            var straightFlushCards = new List<Card>();
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 5 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 7 });
+            straightFlushCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 8 });
+
+            //Act
+            var rank = PokerEvaluator.GetStraightFlushRank(straightFlushCards);            
+
+            //Assert    
+            Assert.AreEqual(8, rank);
+        }
+
+
+        [Test]
+        public void Hand_StraightFlush_HighCard8_Should_Win_StraightFlush_HighCard6()
+        {
+            ////Arrange            
+            //var straightFlushHighCard8Cards = new List<Card>();
+            //straightFlushHighCard8Cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            //straightFlushHighCard8Cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            //straightFlushHighCard8Cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 4 });
+            //straightFlushHighCard8Cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 5 });
+            //straightFlushHighCard8Cards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+                                  
+            //var player1Hand = new Hand();
+            //player1Hand.PlayerId = 1;
+            //player1Hand.Cards = GetCardsPair();
+
+            //var player2Hand = new Hand();
+            //player2Hand.PlayerId = 2;
+            //player2Hand.Cards = GetCardsHighCard();
+
+            //var hands = new List<Hand>();
+            //hands.Add(player1Hand);
+            //hands.Add(player2Hand);
+
+            ////Act
+            //var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            ////Assert    
+            //Assert.AreNotEqual("Player2 wins - HighCard", outcomeMsg);
+        }
+
+
+
         #region Helpers
 
         public List<Card> GetCardsThreeOfAKind()

@@ -667,5 +667,44 @@ namespace RichardPokerGame.Tests
             //Assert    
             Assert.AreEqual("Player1 wins - Straight", outcomeMsg);
         }
+
+        [Test]
+        public void Hand_ThreeOfAKind_Should_Not_Win_Straight()
+        {
+            //Arrange                                    
+            //Straight            
+            var straightCards = new List<Card>();
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 4 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 5 });
+            straightCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 6 });
+
+            var player1Hand = new Hand();
+            player1Hand.Cards = straightCards;
+            player1Hand.PlayerId = 1;
+
+            //ThreeOfAKind            
+            var threeOfAKindCards = new List<Card>();
+            threeOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 2 });
+            threeOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 1 });
+            threeOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 3 });
+            threeOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 3 });
+            threeOfAKindCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = threeOfAKindCards;
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreNotEqual("Player2 wins - ThreeOfAKind", outcomeMsg);
+        }
     }
 }

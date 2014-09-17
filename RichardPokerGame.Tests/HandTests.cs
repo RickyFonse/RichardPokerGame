@@ -822,6 +822,30 @@ namespace RichardPokerGame.Tests
             Assert.AreEqual("Player1 wins - Pair", outcomeMsg);
         }
 
+        [Test]
+        public void Hand_HighCard_Should_Not_Win_Pair()
+        {
+            //Arrange                                                          
+            var player1Hand = new Hand();
+            player1Hand.PlayerId = 1;
+            player1Hand.Cards = GetCardsPair();
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = GetCardsHighCard();
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreNotEqual("Player2 wins - HighCard", outcomeMsg);
+        }
+
+
         #region Helpers
 
         public List<Card> GetCardsThreeOfAKind()

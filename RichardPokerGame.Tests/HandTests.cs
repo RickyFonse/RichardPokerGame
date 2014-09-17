@@ -799,6 +799,29 @@ namespace RichardPokerGame.Tests
             Assert.AreNotEqual("Player2 wins - Pair", outcomeMsg);
         }
 
+        [Test]
+        public void Hand_Pair_Should_Win_HighCard()
+        {
+            //Arrange                                                          
+            var player1Hand = new Hand();
+            player1Hand.PlayerId = 1;
+            player1Hand.Cards = GetCardsPair();
+
+            var player2Hand = new Hand();
+            player2Hand.PlayerId = 2;
+            player2Hand.Cards = GetCardsHighCard();
+
+            var hands = new List<Hand>();
+            hands.Add(player1Hand);
+            hands.Add(player2Hand);
+
+            //Act
+            var outcomeMsg = PokerEvaluator.Evaluate(hands);
+
+            //Assert    
+            Assert.AreEqual("Player1 wins - Pair", outcomeMsg);
+        }
+
         #region Helpers
 
         public List<Card> GetCardsThreeOfAKind()
@@ -834,6 +857,18 @@ namespace RichardPokerGame.Tests
             pairCards.Add(new Card() {Suit = Card.CardSuit.Spade, Value = 5});
             return pairCards;
         }
+
+        public List<Card> GetCardsHighCard()
+        {
+            var highCards = new List<Card>();
+            highCards.Add(new Card() { Suit = Card.CardSuit.Club, Value = 1 });
+            highCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 3 });
+            highCards.Add(new Card() { Suit = Card.CardSuit.Heart, Value = 5 });
+            highCards.Add(new Card() { Suit = Card.CardSuit.Diamond, Value = 7 });
+            highCards.Add(new Card() { Suit = Card.CardSuit.Spade, Value = 9 });
+            return highCards;
+        }
+
 
         #endregion
         }

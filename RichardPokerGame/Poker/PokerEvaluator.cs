@@ -50,9 +50,11 @@ namespace RichardPokerGame.Poker
                 }
                 if (IsPair(hand.Cards))
                 {
-                    hand.Category = Hand.RankCategory.Pair;                    
-                }                
-                
+                    hand.Category = Hand.RankCategory.Pair;
+                    continue;
+                }
+
+                hand.Category = Hand.RankCategory.HighCard;
             }            
 
             var outcomeMsg = string.Empty;

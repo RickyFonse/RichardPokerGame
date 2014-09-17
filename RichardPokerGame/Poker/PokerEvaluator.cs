@@ -172,11 +172,12 @@ namespace RichardPokerGame.Poker
         #endregion
         
         #region RankValueFunctions
-        public static int GetStraightFlushRank(List<Card> cards)
-        {
-            return 8;
-        }
         
+        public static int GetStraightFlushRank(List<Card> cards)
+        {            
+            return cards.OrderByDescending(i => i.Value).First().Value;            
+        }        
+
 
         #endregion
         

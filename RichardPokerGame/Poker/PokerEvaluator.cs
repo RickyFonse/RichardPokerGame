@@ -38,7 +38,11 @@ namespace RichardPokerGame.Poker
                     hand.Category = Hand.RankCategory.Straight;
                     continue;
                 }
-                hand.Category = Hand.RankCategory.ThreeOfAKind;
+                if (IsThreeOfAKind(hand.Cards))
+                {
+                    hand.Category = Hand.RankCategory.ThreeOfAKind;                    
+                }
+                
                 
             }            
 
